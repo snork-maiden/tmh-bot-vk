@@ -21,11 +21,12 @@ const keyboards = {
     ],
     yourDevice: [
         ['мобильный', colorEnum.BLUE],
-        ['компьютер', colorEnum.BLUE],
+        ['компьютер', colorEnum.WHITE],
     ],
     themes: [
-        ['сбор денег', colorEnum.BLUE],
-        ['животные', colorEnum.BLUE],
+        ['Сбор денег', colorEnum.BLUE],
+        ['Животные', colorEnum.WHITE],
+        ['Нет, не то', colorEnum.RED],
     ],
     roolsConfirm: [
         ['Да, дело в этом!', colorEnum.GREEN],
@@ -40,7 +41,11 @@ function createKeyboard(buttons) {
             Markup.button(button[0], button[1])
         );
     }
-    return Markup.keyboard(keyboard, { columns: 1 })
+    let columnCount = 1;
+    if (buttons.length === 2 && (buttons[0][0].length < 5 && buttons[1][0].length < 5)) {
+        columnCount = 2;
+    }
+        return Markup.keyboard(keyboard, { columns: columnCount })
         .inline();
 }
 
