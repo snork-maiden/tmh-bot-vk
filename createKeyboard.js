@@ -28,7 +28,7 @@ const keyboards = {
         ['Животные', colorEnum.WHITE],
         ['Нет, не то', colorEnum.RED],
     ],
-    roolsConfirm: [
+    rulesConfirm: [
         ['Да, дело в этом!', colorEnum.GREEN],
         ['Нет, не то', colorEnum.RED],
     ],
