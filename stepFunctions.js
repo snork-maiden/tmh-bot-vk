@@ -6,10 +6,7 @@ const {
   messageImgDesktop: messageImgDesktop,
   messageImgMobile: messageImgMobile,
 } = require("./messageImg.js");
-const {
-  messageText: messageText,
-  // OldDeviceMessageText: OldDeviceMessageText,
-} = require("./messageText.js");
+const { messageText: messageText } = require("./messageText.js");
 
 function mainMenu(ctx) {
   if (!ctx.clientInfo.keyboard) {
@@ -69,7 +66,6 @@ function createPostConfirm(ctx) {
   }
 }
 
-
 function createPostDevice(ctx) {
   switch (ctx.message.text) {
     case keyboards.yourDevice[0][0]:
@@ -93,7 +89,7 @@ function createPostDevice(ctx) {
   }
 }
 
-function mainRejectPostReasonsList (ctx) {
+function mainRejectPostReasonsList(ctx) {
   switch (ctx.message.text) {
     case keyboards.rulesConfirm[0][0]:
       ctx.scene.selectStep(11);
@@ -218,8 +214,9 @@ function postsForThemes(ctx) {
 
 function rejectPostGoodbye(ctx, func) {
   if (ctx.message.text === keyboards.toMainMenu[0][0]) {
-    (ctx.clientInfo.keyboard) ?
-      ctx.scene.enter("newDevice") : ctx.scene.enter("oldDevice");
+    ctx.clientInfo.keyboard
+      ? ctx.scene.enter("newDevice")
+      : ctx.scene.enter("oldDevice");
     return;
   }
   func(ctx);
@@ -234,22 +231,3 @@ module.exports.anonConfirm = anonConfirm;
 module.exports.anonPosts = anonPosts;
 module.exports.postsForThemes = postsForThemes;
 module.exports.rejectPostGoodbye = rejectPostGoodbye;
-
-
-/* function createOldDeviceSceneStep(ctx, array) {
-  console.log(array[0]);
-  for (let i = 0; i <= array.length; i++) {
-    console.log(array[i]);
-    let a = 0;
-    if (ctx.message.text === String(i + 1)) {
-      console.log(a++);
-      ctx.scene.selectStep(array[i].step);
-      console.log(a++);
-      ctx.reply(array[i].message);
-      console.log(a++);
-      return;
-    }
-  }
-  ctx.reply(OldDeviceMessageText.default);
-} */
-
