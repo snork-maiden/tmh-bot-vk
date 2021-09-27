@@ -104,7 +104,7 @@ function mainRejectPostReasonsList (ctx) {
       );
       break;
     case keyboards.rulesConfirm[1][0]:
-      ctx.scene.next();
+      ctx.scene.selectStep(6);
       ctx.reply(
         messageText.rejectPost.postsForThreads,
         null,
@@ -127,7 +127,7 @@ function postsForThreads(ctx) {
       );
       break;
     case keyboards.rulesConfirm[1][0]:
-      ctx.scene.next();
+      ctx.scene.selectStep(7);
       ctx.reply(
         messageText.rejectPost.isAnon,
         null,
@@ -142,7 +142,7 @@ function postsForThreads(ctx) {
 function anonConfirm(ctx) {
   switch (ctx.message.text) {
     case keyboards.confirm[0][0]:
-      ctx.scene.next();
+      ctx.scene.selectStep(8);
       ctx.reply(
         messageText.rejectPost.anonPosts,
         null,
@@ -173,7 +173,7 @@ function anonPosts(ctx) {
       );
       break;
     case keyboards.rulesConfirm[1][0]:
-      ctx.scene.next();
+      ctx.scene.selectStep(9);
       ctx.reply(
         messageText.rejectPost.isTheme,
         null,
@@ -188,7 +188,7 @@ function anonPosts(ctx) {
 function postsForThemes(ctx) {
   switch (ctx.message.text) {
     case keyboards.themes[0][0]:
-      ctx.scene.selectStep(0);
+      ctx.scene.selectStep(14);
       ctx.reply(
         messageText.rejectPost.fundraising,
         null,
@@ -196,7 +196,7 @@ function postsForThemes(ctx) {
       );
       break;
     case keyboards.themes[1][0]:
-      ctx.scene.next();
+      ctx.scene.selectStep(10);
       ctx.reply(
         messageText.rejectPost.animals,
         null,
@@ -204,7 +204,7 @@ function postsForThemes(ctx) {
       );
       break;
     case keyboards.themes[2][0]:
-      ctx.scene.selectStep(0);
+      ctx.scene.selectStep(14);
       ctx.reply(
         messageText.rejectPost.fullRulesLink,
         null,
@@ -218,7 +218,8 @@ function postsForThemes(ctx) {
 
 function rejectPostGoodbye(ctx, func) {
   if (ctx.message.text === keyboards.toMainMenu[0][0]) {
-    ctx.scene.selectStep(0);
+    (ctx.clientInfo.keyboard) ?
+      ctx.scene.enter("newDevice") : ctx.scene.enter("oldDevice");
     return;
   }
   func(ctx);

@@ -24,7 +24,10 @@ const scene = new Scene(
   },
   // 2
   (ctx) => {
-    if (ctx.message.text === keyboards.toMainMenu[0][0] || ctx.message.text.toLowerCase() === 'стоп') {
+    if (
+      ctx.message.text === keyboards.toMainMenu[0][0] ||
+      ctx.message.text.toLowerCase() === "стоп"
+    ) {
       ctx.scene.enter("newDevice", 0);
     }
   },
@@ -38,7 +41,7 @@ const scene = new Scene(
   },
   //5
   (ctx) => {
-    stepFunctions.mainRejectPostReasonsList (ctx);
+    stepFunctions.mainRejectPostReasonsList(ctx);
   },
   //6
   (ctx) => {
@@ -50,7 +53,7 @@ const scene = new Scene(
   },
   //8
   (ctx) => {
-    stepFunctions.anonPosts(ctx)
+    stepFunctions.anonPosts(ctx);
   },
   //9
   (ctx) => {
@@ -66,23 +69,38 @@ const scene = new Scene(
     );
     stepFunctions.mainMenu(ctx);
   },
-//11
+  //11
   (ctx) => {
-    stepFunctions.rejectPostGoodbye(ctx, stepFunctions.mainRejectPostReasonsList);
+    stepFunctions.rejectPostGoodbye(
+      ctx,
+      stepFunctions.mainRejectPostReasonsList
+    );
+  },
+  //12
+  (ctx) => {
+    stepFunctions.rejectPostGoodbye(ctx, stepFunctions.postsForThreads);
+  },
+  //13
+  (ctx) => {
+    stepFunctions.rejectPostGoodbye(ctx, stepFunctions.anonPosts);
+  },
+  //14
+  (ctx) => {
+    stepFunctions.rejectPostGoodbye(ctx, stepFunctions.postsForThemes);
   }
 );
 
 const oldDeviceScene = new Scene(
   "oldDevice",
   // 0
-    (ctx) => {
-      ctx.reply(messageText.oldDeviceWelcome);
-      ctx.scene.leave();
-    }
+  (ctx) => {
+    ctx.reply(messageText.oldDeviceWelcome);
+    ctx.scene.leave();
+  }
 );
-  //   (ctx) => {
-  //     ctx.reply(OldDeviceMessageText.mainMenu);
-  //     ctx.scene.enter("oldDevice", 1);
+//   (ctx) => {
+//     ctx.reply(OldDeviceMessageText.mainMenu);
+//     ctx.scene.enter("oldDevice", 1);
 //   },
 //   // 1
 //   (ctx) => {
@@ -101,22 +119,22 @@ const oldDeviceScene = new Scene(
 //         step: 2,
 //       },
 //     ]);
-    //     switch (ctx.message.text) {
-    //         case 1:
-    //             ctx.scene.selectStep(3);
-    //             ctx.reply(OldDeviceMessageText.createPost.askUser);
-    //             break;
-    //         case 2:
-    //             ctx.scene.selectStep(5);
-    //             ctx.reply(OldDeviceMessageText.rejectPost.mainReasons);
-    //             break;
-    //         case 3:
-    //             ctx.scene.selectStep(2);
-    //             ctx.reply(OldDeviceMessageText.connectAdmin);
-    //             break;
-    //         default:
-    //             ctx.reply(OldDeviceMessageText.default);
-    // }
+//     switch (ctx.message.text) {
+//         case 1:
+//             ctx.scene.selectStep(3);
+//             ctx.reply(OldDeviceMessageText.createPost.askUser);
+//             break;
+//         case 2:
+//             ctx.scene.selectStep(5);
+//             ctx.reply(OldDeviceMessageText.rejectPost.mainReasons);
+//             break;
+//         case 3:
+//             ctx.scene.selectStep(2);
+//             ctx.reply(OldDeviceMessageText.connectAdmin);
+//             break;
+//         default:
+//             ctx.reply(OldDeviceMessageText.default);
+// }
 //   },
 //   // 2
 //   (ctx) => {
@@ -313,8 +331,6 @@ const oldDeviceScene = new Scene(
 //     mainMenu(ctx);
 //   }
 // );
-
-
 
 module.exports.scene = scene;
 module.exports.oldDeviceScene = oldDeviceScene;
