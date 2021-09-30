@@ -30,6 +30,7 @@ bot.use(async (ctx, next) => {
 bot.startPolling((err) => {
   if (err) {
     console.error(err);
+    console.error(err.response.request_params);
   }
   console.log("bot started");
 });
