@@ -1,12 +1,14 @@
 const Scene = require("node-vk-bot-api/lib/scene");
+
 const {
   keyboards: keyboards,
   createKeyboard: createKeyboard,
 } = require("./createKeyboard.js");
-
 const { messageText: messageText } = require("./messageText.js");
-
 const stepFunctions = require("./stepFunctions.js");
+const stepsList = require("./stepsList.js");
+
+
 
 const scene = new Scene(
   "newDevice",
@@ -25,7 +27,7 @@ const scene = new Scene(
       ctx.message.text === keyboards.toMainMenu[0][0] ||
       ctx.message.text.toLowerCase() === "стоп"
     ) {
-      ctx.scene.enter("newDevice", 0);
+      ctx.scene.enter("newDevice", stepsList.enter);
     }
   },
   //3
@@ -58,7 +60,7 @@ const scene = new Scene(
   },
   //10
   (ctx) => {
-    ctx.scene.selectStep(0);
+    ctx.scene.selectStep(stepsList.enter);
     ctx.reply(
       messageText.rejectPost.fullRulesLink,
       null,
