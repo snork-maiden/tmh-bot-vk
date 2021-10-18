@@ -8,8 +8,6 @@ const { messageText: messageText } = require("./messageText.js");
 const stepFunctions = require("./stepFunctions.js");
 const stepsList = require("./stepsList.js");
 
-
-
 const scene = new Scene(
   "newDevice",
   // 0
@@ -86,6 +84,10 @@ const scene = new Scene(
   //14
   (ctx) => {
     stepFunctions.rejectPostGoodbye(ctx, stepFunctions.postsForThemes);
+  },
+  //15
+  (ctx) => {
+    stepFunctions.continueOrMain(ctx);
   }
 );
 

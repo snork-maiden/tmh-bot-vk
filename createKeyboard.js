@@ -9,7 +9,7 @@ const colorEnum = {
 const keyboards = {
     mainMenu: [
         ['Написать пост', colorEnum.GREEN],
-        ['Пост отклонили', colorEnum.RED],
+        ['Где мой пост?', colorEnum.RED],
         ['Связь с админками', colorEnum.WHITE],
     ],
     confirm: [
@@ -31,6 +31,10 @@ const keyboards = {
     rulesConfirm: [
         ['Да, дело в этом!', colorEnum.GREEN],
         ['Нет, не то', colorEnum.RED],
+    ],
+    rulesNext: [
+        ['Далее', colorEnum.GREEN],
+        ['Главное меню', colorEnum.BLUE],
     ],
 }
 

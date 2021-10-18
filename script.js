@@ -1,7 +1,7 @@
 const VkBot = require("node-vk-bot-api");
 const Session = require("node-vk-bot-api/lib/session");
 const Stage = require("node-vk-bot-api/lib/stage");
-const TOKEN = require("./TOKEN.js");
+const { TOKEN: TOKEN } = require("./TOKEN.js");
 
 const { scene: scene, oldDeviceScene: oldDeviceScene } = require("./scenes.js");
 const bot = new VkBot({
