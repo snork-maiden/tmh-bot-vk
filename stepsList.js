@@ -15,8 +15,8 @@ const stepsList = {
       postsForThreads: 12,
       anonPosts: 13,
       postsForThemes: 14,
-    } 
-  
+    },
+    continueOrMain: 15
   }
   
   module.exports = stepsList;
