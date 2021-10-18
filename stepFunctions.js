@@ -30,12 +30,6 @@ function mainMenu(ctx) {
       break;
     case keyboards.mainMenu[1][0]:
       postponeCheck(ctx);
-      // ctx.scene.selectStep(stepsList.mainRejectPostReasonsList);
-      // ctx.reply(
-      //   messageText.rejectPost.mainReasons,
-      //   null,
-      //   createKeyboard(keyboards.rulesConfirm)
-      // );
       break;
     case keyboards.mainMenu[2][0]:
       ctx.scene.selectStep(stepsList.chat);
@@ -233,7 +227,7 @@ async function postponeCheck(ctx) {
   const posts = await getPostponePosts(ctx);
   console.log(posts);
   if(posts.length === 0) {
-    ctx.scene.selectStep(15); //!!!!
+    ctx.scene.selectStep(15);
     ctx.reply(
       messageText.rejectPost.rejected,
       null,
@@ -243,12 +237,6 @@ async function postponeCheck(ctx) {
   }
 
  let ids = posts.filter( item => item.signer_id).map( item => item.signer_id);
-//  let ids = posts.reduce( (acum,item) => {
-//     if (item.signer_id) {
-//       acum.push(item.signer_id);
-//       return acum;
-//     }
-//   }, []);
 
 console.log(ids);
 
@@ -262,7 +250,7 @@ console.log(ids);
     return;
   }
 
-  ctx.scene.selectStep(15); //!!!!
+  ctx.scene.selectStep(15); 
   ctx.reply(
     messageText.rejectPost.rejectedOrAnon,
     null,

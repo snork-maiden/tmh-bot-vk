@@ -8,8 +8,6 @@ const { messageText: messageText } = require("./messageText.js");
 const stepFunctions = require("./stepFunctions.js");
 const stepsList = require("./stepsList.js");
 
-
-
 const scene = new Scene(
   "newDevice",
   // 0
