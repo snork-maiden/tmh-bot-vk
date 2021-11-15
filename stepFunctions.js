@@ -225,7 +225,6 @@ function rejectPostGoodbye(ctx, func) {
 
 async function postponeCheck(ctx) {
   const posts = await getPostponePosts(ctx);
-  console.log(posts);
   if(posts.length === 0) {
     ctx.scene.selectStep(15);
     ctx.reply(
@@ -237,8 +236,6 @@ async function postponeCheck(ctx) {
   }
 
  let ids = posts.filter( item => item.signer_id).map( item => item.signer_id);
-
-console.log(ids);
 
   if(ids.includes(ctx.message.from_id)) {
     ctx.scene.selectStep(stepsList.enter);
