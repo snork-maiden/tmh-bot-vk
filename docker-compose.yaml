@@ -5,12 +5,11 @@ volumes:
 
 services:
   node:
+    image: tmh-vk-bot:latest
     build:
       context: .
       dockerfile: Dockerfile
-    image: tmh-vk-bot
     container_name: tmh-vk-bot
     restart: unless-stopped
     command: node script.js
     user: node
-    image: node:lts-alpine3.14
