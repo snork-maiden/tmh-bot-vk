@@ -19,6 +19,10 @@ function mainMenu(ctx) {
     ctx.reply(messageText.oldDeviceRecognise);
     ctx.scene.leave();
   }
+  if (ctx.message.text.toLowerCase() === 'стоп') {
+    ctx.scene.enter("newDevice", stepsList.enter);
+    return;
+  }
   switch (ctx.message.text) {
     case keyboards.mainMenu[0][0]:
       ctx.scene.selectStep(stepsList.createPostConfirm);

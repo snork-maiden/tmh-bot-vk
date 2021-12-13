@@ -12,7 +12,7 @@ const scene = new Scene(
   "newDevice",
   // 0
   (ctx) => {
-    ctx.scene.next();
+    ctx.scene.selectStep(stepsList.mainMenu);
     ctx.reply(messageText.mainMenu, null, createKeyboard(keyboards.mainMenu));
   },
   // 1
